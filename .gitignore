@@ -73,7 +73,7 @@ web_modules/
 .yarn-integrity
 
 # dotenv environment variable files
-.env
+backend/.env
 .env.development.local
 .env.test.local
 .env.production.local
@@ -102,7 +102,6 @@ dist
 
 # vuepress v2.x temp and cache directory
 .temp
-.cache
 
 # Docusaurus cache and generated files
 .docusaurus
@@ -128,3 +127,33 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+*.csv
+*.dat
+*.out
+*.gz
+*.swp
+*.sqlite
+
+bun.lockb
+
+results
+tmp
+
+# Bundle size reports
+bundlesize
+
+
+# Local SSL certificates
+.ssl
+
+# Dependency directory
+node_modules
+
+# Editors
+.idea
+*.iml
+
+# OS metadata
+.DS_Store
+Thumbs.db

@@ -1,0 +1,62 @@
+/* ./src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Mona Sans';
+  src: url('./fonts/MonaSans-Regular.ttf') format('truetype');
+  font-weight: 400;
+  /* normal */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mona Sans';
+  src: url('./fonts/MonaSans-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  /* semi-bold */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mona Sans';
+  src: url('./fonts/MonaSans-Bold.ttf') format('truetype');
+  font-weight: 700;
+  /* bold */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mona Sans';
+  src: url('./fonts/MonaSansExpanded-Black.ttf') format('truetype');
+  font-weight: 900;
+  /* black */
+  font-style: normal;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  font-size: 16px;
+}
+
+body {
+  overflow: hidden;
+  background-color: rgb(249, 249, 249);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: 'Mona Sans', sans-serif;
+  font-weight: normal;
+  height: full;
+}
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+}

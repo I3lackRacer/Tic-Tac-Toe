@@ -1,0 +1,65 @@
+<html>
+<head>
+    <script src="https://cdn.socket.io/4.3.2/socket.io.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.1/js.cookie.min.js"
+            crossorigin="anonymous"></script>
+    <script>
+        const socket = io('http://localhost:3000', {
+            auth: {
+                jwtToken: "Bearer eeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlRpbSIsInN1YiI6MSwiaWF0IjoxNzA5NzE0OTk5LCJleHAiOjE3MTAzMTk3OTl9.7fZCd3JCEDShGUMSKSBvV__eDW08aJA08wNFV6CLjVs"
+            }
+        });
+        let currentGameId = null;
+
+        socket.on('error', (errorMessage) => {
+            console.error('error:', errorMessage);
+            // Handle the error, e.g., by showing a message to the user or attempting reconnection with a valid token
+        });
+
+        socket.on('connect', function () {
+            console.log('Connected');
+        });
+
+        socket.on('game.new', function (data) {
+            console.log('Match found:', data);
+            currentGameId = data.gameId;
+            socket.emit('joinGameRoom', {gameId: currentGameId});
+        });
+
+        socket.on('exception', function (data) {
+            console.log('event', data);
+        });
+
+        socket.on('search.count', function (data) {
+            console.log('search.count', data);
+        });
+
+        socket.on('disconnect', function () {
+            console.log('Disconnected');
+        });
+
+        function joinQueue() {
+            socket.emit('search', {});
+            console.log('Attempting to join queue...');
+        }
+
+        function makeMove() {
+            const x = document.getElementById('moveX').value;
+            const y = document.getElementById('moveY').value;
+            const gameId = currentGameId;
+
+            socket.emit('game.move', {gameId, move: {x, y}});
+            console.log(`Move made at (${x}, ${y}) for game ${gameId}`);
+        }
+
+    </script>
+</head>
+
+<body>
+<button onclick="joinQueue()">Join Queue</button>
+<div id="gameBoard"></div>
+<input type="number" id="moveX" placeholder="X Coordinate" min="0" max="2">
+<input type="number" id="moveY" placeholder="Y Coordinate" min="0" max="2">
+<button onclick="makeMove()">Make Move</button>
+</body>
+</html>

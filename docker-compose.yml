@@ -1,0 +1,8 @@
+version: '3.8'
+services:
+  ttt:
+    build: .
+    container_name: ttt-matchmaking
+    restart: unless-stopped
+    ports:
+      - "80:3000"
