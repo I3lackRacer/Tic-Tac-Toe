@@ -1,1 +1,7 @@
 */node_modules/*
+./backend/.eslintrc.js
+./backend/nest-cli.json
+./backend/.gitignore
+./backend/.prettierrc
+./backend/.env
+./backend/test

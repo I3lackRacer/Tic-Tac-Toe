@@ -17,6 +17,7 @@ import {FrontendController} from "./controller/frontend/frontend.controller";
 import {ServeStaticModule} from "@nestjs/serve-static";
 import {join} from "path";
 import {SeederService} from "./services/seeder/seeder.service";
+import * as process from "process";
 
 @Module({
     imports: [
@@ -29,7 +30,7 @@ import {SeederService} from "./services/seeder/seeder.service";
         AuthModule,
         TypeOrmModule.forRoot({
             type: "sqlite",
-            database: "./db.sqlite",
+            database: process.env.dbPath || "./db.sqlite",
             entities: [User, GameResult],
             synchronize: true
         }),

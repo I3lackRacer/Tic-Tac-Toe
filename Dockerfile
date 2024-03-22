@@ -24,6 +24,9 @@ COPY ./backend .
 
 RUN npm run build
 
+RUN rm -rf /usr/src/app/src
+RUN rm -rf *.json
+
 EXPOSE 3000
 
 CMD [ "node", "dist/main.js" ]
