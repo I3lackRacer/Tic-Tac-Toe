@@ -19,6 +19,12 @@ import {join} from "path";
 import {SeederService} from "./services/seeder/seeder.service";
 import * as process from "process";
 
+function getDBPath() {
+    const dbPath =process.env.dbPath || "./db.sqlite"
+    console.log("DB path: ", dbPath)
+    return dbPath
+}
+
 @Module({
     imports: [
         ServeStaticModule.forRoot({
@@ -30,7 +36,7 @@ import * as process from "process";
         AuthModule,
         TypeOrmModule.forRoot({
             type: "sqlite",
-            database: process.env.dbPath || "./db.sqlite",
+            database: getDBPath(),
             entities: [User, GameResult],
             synchronize: true
         }),
