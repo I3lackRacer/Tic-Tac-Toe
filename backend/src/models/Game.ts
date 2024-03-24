@@ -14,7 +14,7 @@ export class Game {
         public player1: WSConnection,
         public player2: WSConnection
     ) {
-        this.isPlayer1Turn = Math.random() % 1 == 0
+        this.isPlayer1Turn = Math.random() < 0.5
     }
 
     makeMove(x: number, y: number, user: WSConnection) {
